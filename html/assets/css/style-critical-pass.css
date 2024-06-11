@@ -95,11 +95,12 @@
   background-color: #69ba2d;
 }
 .nk-testimonial-card-s3 .nk-testimonial-icon .icon {
-  background: none;
-  background-color: #69ba2d;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 5.25rem;
+    background: linear-gradient(90deg, #69ba2d 0%, #69ba2d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 
 .nk-swiper-s4 .swiper-pagination-bullet-active {
   background-color: #69ba2d;
@@ -115,5 +116,5 @@
   color: #fff;
   border: 0px solid #e5e7eb;
   border-radius: 6px;
-  background-color: #6366f1;
+  background-color: #69ba2d;
 }
