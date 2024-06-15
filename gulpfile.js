@@ -19,7 +19,7 @@ const configs = {
 // COMPILE - HTML FILES
 function htmls(cb) {
     src(['html/**', '!html/assets/**', '!html/from/**', '!html/images/**'])
-        .pipe(dest('dist'));
+        .pipe(dest('docs'));
     cb();
 }
 
@@ -30,7 +30,7 @@ function stylecss(cb) {
         // .pipe(sourcemaps.init())                 // If you want generate source map.
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))    // If you want non-minify css then remove {outputStyle: 'compressed'} in sass()
         // .pipe(sourcemaps.write('./'))            // If you want generate source map.
-        .pipe(dest(`dist/assets/css`))
+        .pipe(dest(`docs/assets/css`))
 
     cb();
 }
@@ -46,12 +46,12 @@ function jsvendor(cb) {
             basepath: '@root',
             context: {
                 vendorRoot: configs.vendorRoot,
-                build: 'dist',
+                build: 'docs',
                 nodeRoot: configs.nodeRoot
             }
         }))
         .pipe(minify({ minify: true, minifyJS: { sourceMap: false } }))
-        .pipe(dest(`dist/assets/js`));
+        .pipe(dest(`docs/assets/js`));
 
     src([`src/js/bundle.js`])
         .pipe(fileinclude({
@@ -59,22 +59,22 @@ function jsvendor(cb) {
             basepath: '@root',
             context: {
                 vendorRoot: configs.vendorRoot,
-                build: 'dist',
+                build: 'docs',
                 nodeRoot: configs.nodeRoot
             }
         }))
         .pipe(minify({ minify: true, minifyJS: { sourceMap: false } }))
-        .pipe(dest(`dist/assets/js`));
+        .pipe(dest(`docs/assets/js`));
 
     cb();
 }
 
 // COPYING - ASSETS & IMAGES
 function assets(cb) {
-    src(`src/assets/fonts/**`).pipe(dest(`dist/assets/fonts`));
-    src(`src/assets/images/**`).pipe(dest(`dist/assets/images`));
-    src(`html/images/**`).pipe(dest(`dist/images`));
-    src(`html/form/**`).pipe(dest(`dist/form`));
+    src(`src/assets/fonts/**`).pipe(dest(`docs/assets/fonts`));
+    src(`src/assets/images/**`).pipe(dest(`docs/assets/images`));
+    src(`html/images/**`).pipe(dest(`docs/images`));
+    src(`html/form/**`).pipe(dest(`docs/form`));
     cb();
 }
 
