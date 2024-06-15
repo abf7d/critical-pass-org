@@ -107,11 +107,14 @@ $darker: $nk-gray-1200;
 $nk-dark-600: #1c2b43;
 $nk-dark-blue-gray: $nk-gray-1100;
 
+$cp-green: #69ba2d; 
+$cp-green-dark: #5f8e3c;
+
 // // Base Colors
-$primary: $nk-blue-1300;
+$primary: $cp-green-dark; //$nk-blue-1300;
 $secondary: $nk-gray-1100;
 
-$primary-light: $nk-cyan-200;
+$primary-light: $cp-green; //$nk-cyan-200;
 
 // // normal layout colors
 $normal-layout-primary: $primary;
