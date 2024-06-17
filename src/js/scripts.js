@@ -711,47 +711,97 @@ Scroll Carousel
     Newsletter
 ========================================================== */
 
-  NioApp.Custom.submitForm = function (selector) {
-    let elm = document.querySelectorAll(selector);
-    if (elm) {
-      elm.forEach(item => {
-        const formAction = item.dataset.action;
+NioApp.Custom.submitForm = function (selector) {
 
-        let formValidate = NioApp.Addons.pristine(item, false)
-        item.addEventListener('submit', function (e) {
-          e.preventDefault();
-          let valid = formValidate.validate();
+  // Fetch the base URL from the JSON configuration file
+  fetch('config.json')
+  .then(response => response.json())
+  .then(config => {
+      let baseUrl = config.baseUrl;
+      let elements = document.querySelectorAll(selector);
+      if (elements) {
+          elements.forEach(item => {
+              let formAction = baseUrl + item.dataset.action; // Append endpoint to base URL
+              let formValidate = NioApp.Addons.pristine(item, false);
+
+              item.addEventListener('submit', function (e) {
+                  e.preventDefault();
+                  let valid = formValidate.validate();
+
+                  if (valid) {
+                      let data = new FormData(item);
+
+                      // Use fetch API to send the form data to the constructed URL
+                      fetch(formAction, {
+                          method: 'POST',
+                          body: data
+                      })
+                      .then(response => {
+                          if (response.ok) {
+                              return response.json(); // Assuming server responds with JSON
+                          }
+                          throw new Error('Network response was not ok.');
+                      })
+                      .then(res => {
+                          NioApp.Addons.toast(res.result, res.message);
+                      })
+                      .catch(error => {
+                          console.error('There has been a problem with your fetch operation:', error);
+                          NioApp.Addons.toast("error", "Oops! There was something went wrong.");
+                      });
+
+                      // Clear Input Field 
+                      item.reset();
+                  }
+              });
+          });
+      }
+  })
+  .catch(error => {
+      console.error('Error fetching the configuration:', error);
+  });
+}
+  // NioApp.Custom.submitForm = function (selector) {
+  //   let elm = document.querySelectorAll(selector);
+  //   if (elm) {
+  //     elm.forEach(item => {
+  //       const formAction = item.dataset.action;
+
+  //       let formValidate = NioApp.Addons.pristine(item, false)
+  //       item.addEventListener('submit', function (e) {
+  //         e.preventDefault();
+  //         let valid = formValidate.validate();
 
 
-          if (valid) {
-            let data = new FormData(item);
-            const xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-              if (this.readyState == 4 && this.status == 200) {
-                let res = null;
-                try { res = JSON.parse(xhttp.responseText) } catch (e) { }
-                if (res) {
-                  NioApp.Addons.toast(res.result, res.message);
-                } else {
-                  NioApp.Addons.toast("error", "Oops! There was something went wrong.")
-                }
-              }
-            };
+  //         if (valid) {
+  //           let data = new FormData(item);
+  //           const xhttp = new XMLHttpRequest();
+  //           xhttp.onreadystatechange = function () {
+  //             if (this.readyState == 4 && this.status == 200) {
+  //               let res = null;
+  //               try { res = JSON.parse(xhttp.responseText) } catch (e) { }
+  //               if (res) {
+  //                 NioApp.Addons.toast(res.result, res.message);
+  //               } else {
+  //                 NioApp.Addons.toast("error", "Oops! There was something went wrong.")
+  //               }
+  //             }
+  //           };
 
-            xhttp.open("POST", formAction, true);
-            xhttp.send(data);
+  //           xhttp.open("POST", formAction, true);
+  //           xhttp.send(data);
 
-            // Clear Input Field 
-            item.reset();
-          }
+  //           // Clear Input Field 
+  //           item.reset();
+  //         }
 
-        });
-      })
-    }
+  //       });
+  //     })
+  //   }
 
 
 
-  }
+  // }
 
   /*  =======================================================
       Tool Tip
