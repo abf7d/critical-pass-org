@@ -714,10 +714,10 @@ Scroll Carousel
 NioApp.Custom.submitForm = function (selector) {
 
   // Fetch the base URL from the JSON configuration file
-  fetch('config.json')
-  .then(response => response.json())
-  .then(config => {
-      let baseUrl = config.baseUrl;
+  // fetch('config.json')
+  // .then(response => response.json())
+  // .then(config => {
+      let baseUrl = '1234'; //config.baseUrl;
       let elements = document.querySelectorAll(selector);
       if (elements) {
           elements.forEach(item => {
@@ -729,18 +729,25 @@ NioApp.Custom.submitForm = function (selector) {
                   let valid = formValidate.validate();
 
                   if (valid) {
-                      let data = new FormData(item);
+                      var formData = new FormData(item);
+                      const json = JSON.stringify(Object.fromEntries(formData));
+
+                      
+
+                      console.log('item', json);
+                      //https://criticalpathapifunctions.azurewebsites.net/api/contact-us
 
                       // Use fetch API to send the form data to the constructed URL
                       fetch(formAction, {
                           method: 'POST',
-                          body: data
+                          body: json
                       })
                       .then(response => {
+                          console.log('response', response)
                           if (response.ok) {
                               return response.json(); // Assuming server responds with JSON
                           }
-                          throw new Error('Network response was not ok.');
+                          throw new Error('There was an error submitting form.');
                       })
                       .then(res => {
                           NioApp.Addons.toast(res.result, res.message);
@@ -756,10 +763,10 @@ NioApp.Custom.submitForm = function (selector) {
               });
           });
       }
-  })
-  .catch(error => {
-      console.error('Error fetching the configuration:', error);
-  });
+  // })
+  // .catch(error => {
+  //     console.error('Error fetching the configuration:', error);
+  // });
 }
   // NioApp.Custom.submitForm = function (selector) {
   //   let elm = document.querySelectorAll(selector);
