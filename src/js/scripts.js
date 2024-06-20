@@ -714,10 +714,10 @@ Scroll Carousel
 NioApp.Custom.submitForm = function (selector) {
 
   // Fetch the base URL from the JSON configuration file
-  // fetch('config.json')
-  // .then(response => response.json())
-  // .then(config => {
-      let baseUrl = '1234'; //config.baseUrl;
+  fetch('config.json')
+  .then(response => response.json())
+  .then(config => {
+      let baseUrl = config.baseUrl;
       let elements = document.querySelectorAll(selector);
       if (elements) {
           elements.forEach(item => {
@@ -763,10 +763,10 @@ NioApp.Custom.submitForm = function (selector) {
               });
           });
       }
-  // })
-  // .catch(error => {
-  //     console.error('Error fetching the configuration:', error);
-  // });
+  })
+  .catch(error => {
+      console.error('Error fetching the configuration:', error);
+  });
 }
   // NioApp.Custom.submitForm = function (selector) {
   //   let elm = document.querySelectorAll(selector);
