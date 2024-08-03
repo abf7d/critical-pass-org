@@ -8,6 +8,17 @@ const minify = require('gulp-minifier');
 
 const run = require('gulp-run-command').default;
 
+const browserSync = require('browser-sync').create();
+
+// Browser-Sync task
+function browserSyncTask(cb) {
+    browserSync.init({
+        server: {
+            baseDir: './docs'
+        }
+    });
+}
+
 // VARIABLES
 const configs = {
     nodeRoot: './',
@@ -19,7 +30,8 @@ const configs = {
 // COMPILE - HTML FILES
 function htmls(cb) {
     src(['html/**', '!html/assets/**', '!html/from/**', '!html/images/**'])
-        .pipe(dest('docs'));
+        .pipe(dest('docs'))
+        .on('end', browserSync.reload); 
     cb();
 }
 
@@ -31,7 +43,7 @@ function stylecss(cb) {
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))    // If you want non-minify css then remove {outputStyle: 'compressed'} in sass()
         // .pipe(sourcemaps.write('./'))            // If you want generate source map.
         .pipe(dest(`docs/assets/css`))
-
+        .pipe(browserSync.stream()); 
     cb();
 }
 
@@ -84,6 +96,7 @@ function assets(cb) {
 exports.build = series(htmls, jsvendor, stylecss, assets);
 
 exports.develop = function () {
+    browserSyncTask(); 
     watch([`html/*.html`]).on('change', series(htmls))
     watch([`src/js/**`]).on('change', series(jsvendor))
     watch([`src/scss/**`], { ignoreInitial: false }, series(stylecss))
