@@ -3,14 +3,17 @@ const { src, dest, parallel, series, watch } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const fileinclude = require('gulp-file-include');
 const sourcemaps = require('gulp-sourcemaps');
-
+const replace = require('gulp-replace');
 const minify = require('gulp-minifier');
-
+const fs = require('fs');
 const run = require('gulp-run-command').default;
 
 const browserSync = require('browser-sync').create();
 
-// Browser-Sync task
+// Added browserSnyc so wher yuo run gulp develop it will open the browser and reload the page when you make changes to the files.
+// I'm also loading the config file based on the environment. I have two config files, one for development and one for production.
+// When you run gulp build it will load the production config file and when you run gulp develop it will load the development config file.
+
 function browserSyncTask(cb) {
     browserSync.init({
         server: {
@@ -19,18 +22,23 @@ function browserSyncTask(cb) {
     });
 }
 
-// VARIABLES
+let config; 
+
+function loadConfig(environment) {
+  const configFile = `./config.${environment}.json`;
+  config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+}
+
 const configs = {
     nodeRoot: './',
     vendorRoot: 'src'
 };
 
-//////////////////////////////////////
-
 // COMPILE - HTML FILES
 function htmls(cb) {
     src(['html/**', '!html/assets/**', '!html/from/**', '!html/images/**'])
-        .pipe(dest('docs'))
+    .pipe(replace('%%BASEURL%%', config.baseUrl))
+    .pipe(dest('docs'))
         .on('end', browserSync.reload); 
     cb();
 }
@@ -90,12 +98,15 @@ function assets(cb) {
     cb();
 }
 
-// EXPORTS COMMAND FOR COMPILE
-//////////////////////////////////////
 
-exports.build = series(htmls, jsvendor, stylecss, assets);
+exports.build = series((cb) => {
+    loadConfig('production');
+    cb();
+},
+  htmls, jsvendor, stylecss, assets);
 
 exports.develop = function () {
+    loadConfig('development');
     browserSyncTask(); 
     watch([`html/*.html`]).on('change', series(htmls))
     watch([`src/js/**`]).on('change', series(jsvendor))
