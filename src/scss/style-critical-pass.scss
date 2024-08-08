@@ -1,7 +1,6 @@
 .dashboard {
   border-radius: 30px;
   padding: 22px;
-  margin-left: -64px;
   filter: drop-shadow(0px 0px 8px #69ba2d);
   border-radius: 35px;
 }
@@ -118,3 +117,19 @@
   border-radius: 6px;
   background-color: #69ba2d;
 }
+.nk-brand {
+  & > a {
+    color: black;
+    font-size: 1.43rem;
+  }
+  span {
+    font-size: 1.3rem;
+    font-weight: 900;
+  }
+}
+ .nk-brand > a {
+  color: #444;
+ }
+ .auto-w > div {
+  width: auto;
+ }
