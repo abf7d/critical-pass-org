@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <title>Critical Pass</title>
+    <!-- <link rel="stylesheet" href="assets/css/style-project-management.css?v1.0.0">    
+    <link rel="stylesheet" href="assets/css/style-critical-pass.css?v1.0.0"> -->
+    <!-- <link rel="stylesheet" href="assets/css/brands.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> -->
+    <style>
+        .unstyled-content-fix {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body class="nk-body" data-navbar-collapse="xl">
+    <div class="preloader" [ngClass]="{'hide': finishedLoading}">
+        <div class="loader"></div>
+    </div>
+    <div class="nk-app-root home-project-management unstyled-content-fix" [ngStyle]="{'visibility': finishedLoading ? 'visible' : 'hidden'}">
+        <cpo-top-nav-header></cpo-top-nav-header>
+        <main class="nk-pages">
+            <router-outlet></router-outlet>
+        </main>
+        <cpo-top-nav-footer></cpo-top-nav-footer>
+        <a href="#" class="scroll-top shadow animate animate-infinite animate-pulse animate-duration-2">
+            <em class="icon ni ni-chevrons-up"></em>
+        </a>
+        <div class="nk-sticky-badge">
+            <ul>
+                <li>
+                    <a href="index.html" target="_blank" class="nk-sticky-badge-icon nk-sticky-badge-home"
+                        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="nk-tooltip"
+                        data-bs-title="View Demo">
+                        <em class="icon ni ni-home-fill"></em>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://1.envato.market/NioLand" target="_blank"
+                        class="nk-sticky-badge-icon nk-sticky-badge-purchase" data-bs-toggle="tooltip"
+                        data-bs-custom-class="nk-tooltip" data-bs-title="Purchase Now" aria-label="Purchase Now">
+                        <em class="icon ni ni-cart-fill"></em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <script type="module" src="/src/main.ts"></script> -->
+</body>
+
+</html>

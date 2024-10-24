@@ -1,0 +1,30 @@
+.semi-transparent {
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.sphere-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // width: 100vw;
+    /* Full viewport width */
+    // height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    max-height: 1070px;
+    /* Prevent scrollbars */
+    // & > canvas {
+    //     // height: 600px !important;
+    //     width: unset!important;
+    //     max-width: none;
+    // }
+
+    // canvas.threejs-canvas {
+    //     width: unset!important;
+    //     max-width: none;
+    // }
+   
+}
+
+.padding-bottom {
+    padding-bottom: 165px;
+}

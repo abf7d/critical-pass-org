@@ -1,0 +1,151 @@
+<header class="nk-header">
+    <div class="nk-header-main nk-navbar-main has-separate">
+        <div class="container">
+            <div class="nk-header-wrap">
+                <div class="nk-header-logo">
+                    <a href="index.html" class="logo-link">
+                        <div class="logo-wrap">
+                            <img class="logo-img logo-light" src="assets/images/logo-s1.png"
+                                srcset="assets/images/logo-s12x.png 2x" alt="brand-logo">
+                            <img class="logo-img logo-dark" src="assets/images/logo-s1-dark.png"
+                                srcset="assets/images/logo-s1-dark2x.png 2x" alt="brand-logo">
+                        </div>
+                    </a>
+                </div>
+                <nav class="nk-header-menu nk-navbar">
+                    <div>
+                        <ul class="nk-nav">
+                            <li class="nk-nav-item">
+                                <a [href]="appUrl + '/login'" class="nk-nav-link">
+                                    <span class="nk-nav-text">Sign In</span>
+                                </a>
+                            </li>
+                            <li class="nk-nav-item">
+                                <a routerLink="/learn-more" class="nk-nav-link">
+                                    <span class="nk-nav-text">Learn More</span>
+                                </a>
+                            </li>
+                            <li class="nk-nav-item">
+                                <a routerLink="/about"  class="nk-nav-link">
+                                    <span class="nk-nav-text">About</span>
+                                </a>
+                            </li>
+
+                            <!-- <li class="nk-nav-item has-sub">
+                                <a href="#" class="nk-nav-link nk-nav-toggle">
+                                    <span class="nk-nav-text">Pages</span>
+                                </a>
+                                <ul class="nk-nav-sub nk-nav-mega row nk-nav-mega-lg">
+                                    <li class="nk-nav-item col-lg-8">
+                                        <ul class="row px-3 px-lg-0 mx-auto">
+                                            <li class="col-lg-4 p-0">
+                                                <a href="about.html" class="nk-nav-link"> About </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="about-business-solution.html" class="nk-nav-link"> About - v2 </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="page-404.html" class="nk-nav-link"> 404 Error </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="features.html" class="nk-nav-link"> Features </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="features-business-solution.html" class="nk-nav-link"> Features -v2 </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="customer-testimonials.html" class="nk-nav-link"> Testimonials </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="contact-us.html" class="nk-nav-link"> Contact Us </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="contact-us-business-solution.html" class="nk-nav-link"> Contact Us -v2 </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="login.html" class="nk-nav-link"> Login </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="pricing.html" class="nk-nav-link"> Pricing </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="pricing-business-solution.html" class="nk-nav-link"> Pricing -v2 </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="https://app.criticalpass.io/login" class="nk-nav-link"> Sign Up </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="blogs.html" class="nk-nav-link"> Blogs </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="blog-single.html" class="nk-nav-link"> Blog Single </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="reset-password.html" class="nk-nav-link"> Reset Password </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="help-center.html" class="nk-nav-link"> Help Center </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="help-center-single.html" class="nk-nav-link"> Help Center Single </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="forgot-password.html" class="nk-nav-link"> Forgot Password </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="terms-and-conditions.html" class="nk-nav-link"> Terms &amp; Conditions </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="careers.html" class="nk-nav-link"> Careers </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="career-details.html" class="nk-nav-link"> Career Details </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="careers-project-manage.html" class="nk-nav-link"> Careers-v2 </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="career-details-project-manage.html" class="nk-nav-link d-flex align-items-center text-nowrap"> Careers Details-v2 </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="shop.html" class="nk-nav-link"> Shop </a>
+                                            </li>
+                                            <li class="col-lg-4 p-0">
+                                                <a href="product-details.html" class="nk-nav-link"> Product Details </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nk-nav-item col-lg-4 nk-nav-media d-none d-lg-block">
+                                        <a href="https://1.envato.market/NioLand" target="_blank">
+                                            <img src="assets/images/promo-banner/promo-1.png" alt="promo-banner" class="rounded-3">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <li class="nk-nav-item">
+                                <a routerLink="/contact-us" class="nk-nav-link">
+                                    <span class="nk-nav-text">Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="nk-header-action">
+                    <ul class="nk-btn-group sm justify-content-center">
+                        <li class="d-none d-md-block">
+                            <a routerLink="/request-demo" class="btn btn-dark text-nowrap">
+                                <em class="icon ni ni-bag-fill"></em>
+                                <span>Request a Demo</span>
+                            </a>
+                        </li>
+                        <li class="nk-navbar-toggle">
+                            <button class="btn btn-outline-primary navbar-toggle rounded-1 p-2 h-100">
+                                <em class="icon ni ni-menu"></em>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
